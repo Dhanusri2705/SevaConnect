@@ -167,5 +167,11 @@ router.get(
   downloadGeneratedDocument
 );
 
+router.get(
+  "/:id/document/stream",
+  authenticateToken,
+  downloadGeneratedDocument
+);
+
 
 module.exports = router;

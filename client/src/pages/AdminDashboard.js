@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../services/api";
 import MainLayout from "../layouts/MainLayout";
 import DocumentVerificationModal from "../components/DocumentVerificationModal";
 import StatusUpdateModal from "../components/StatusUpdateModal";
@@ -51,7 +51,7 @@ function AdminDashboard() {
 
   const fetchApplications = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/applications");
+      const response = await api.get("/api/applications");
       setApplications(response.data || []);
     } catch (error) {
       console.error("Error fetching applications:", error);
@@ -60,7 +60,7 @@ function AdminDashboard() {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/auth/users");
+      const response = await api.get("/api/auth/users");
       setUsers(response.data || []);
     } catch (error) {
       console.error("Error fetching users:", error);
@@ -69,7 +69,7 @@ function AdminDashboard() {
 
   const fetchServices = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/services");
+      const response = await api.get("/api/services");
       setServices(response.data || []);
     } catch (error) {
       console.error("Error fetching services:", error);

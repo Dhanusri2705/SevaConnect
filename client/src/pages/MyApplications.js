@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../services/api";
 import MainLayout from "../layouts/MainLayout";
 
 import ApplicationDetailsModal from "../components/ApplicationDetailsModal";
@@ -29,8 +29,8 @@ function MyApplications() {
 
   const fetchApplications = async () => {
     try {
-      const response = await axios.get(
-        `http://localhost:5000/api/applications/user/${userEmail}`
+      const response = await api.get(
+        `/api/applications/user/${userEmail}`
       );
       setApplications(response.data || []);
     } catch (error) {
@@ -82,8 +82,8 @@ function MyApplications() {
   const downloadServiceDocument = async (appId) => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.get(
-        `http://localhost:5000/api/applications/${appId}/document/stream`,
+      const res = await api.get(
+        `/api/applications/${appId}/document/stream`,
         {
           headers: { Authorization: `Bearer ${token}` },
           responseType: "blob",
@@ -106,8 +106,8 @@ function MyApplications() {
   const downloadPaymentReceipt = async (appId) => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.get(
-        `http://localhost:5000/api/payment/${appId}/receipt/download`,
+      const res = await api.get(
+        `/api/payment/${appId}/receipt/download`,
         {
           headers: { Authorization: `Bearer ${token}` },
           responseType: "blob",

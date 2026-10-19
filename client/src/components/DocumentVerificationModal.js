@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import api, { getFileUrl } from "../services/api";
 
 function DocumentVerificationModal({ show, onClose, application, onUpdate }) {
   const [loadingDocId, setLoadingDocId] = useState(null);
@@ -14,12 +14,7 @@ function DocumentVerificationModal({ show, onClose, application, onUpdate }) {
 
   // Construct viewable file URL
   const getDocumentUrl = (filePath) => {
-    if (!filePath) return "#";
-    const cleanPath = filePath.replace(/\\/g, "/");
-    if (cleanPath.startsWith("http://") || cleanPath.startsWith("https://")) {
-      return cleanPath;
-    }
-    return `http://localhost:5000/${cleanPath}`;
+    return getFileUrl(filePath);
   };
 
   // Open file in new window/tab
@@ -36,7 +31,7 @@ function DocumentVerificationModal({ show, onClose, application, onUpdate }) {
     const isApprove =
       status === "Accepted" || status === "Approved" || status === "approved";
     const targetStatus = isApprove ? "Accepted" : "Rejected";
-    const endpointUrl = `http://localhost:5000/api/applications/${application._id}/documents/verify`;
+    const endpointUrl = `/api/applications/${application._id}/documents/verify`;
 
     console.log("VERIFY DOCUMENT CALL:", {
       endpoint: endpointUrl,
@@ -45,7 +40,7 @@ function DocumentVerificationModal({ show, onClose, application, onUpdate }) {
     });
 
     try {
-      const response = await axios.put(
+      const response = await api.put(
         endpointUrl,
         {
           documentId: docId,

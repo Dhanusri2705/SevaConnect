@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../services/api";
 import MainLayout from "../layouts/MainLayout";
 
 function Profile() {
@@ -39,8 +39,8 @@ function Profile() {
       // 1. Fetch user profile from backend
       let userData = null;
       try {
-        const profileRes = await axios.get(
-          "http://localhost:5000/api/auth/profile",
+        const profileRes = await api.get(
+          "/api/auth/profile",
           authConfig
         );
         userData = profileRes.data;
@@ -55,8 +55,8 @@ function Profile() {
       const userEmail = userData?.email || localUser?.email;
 
       if (userRole === "citizen" && userEmail) {
-        const appsRes = await axios.get(
-          `http://localhost:5000/api/applications/user/${userEmail}`
+        const appsRes = await api.get(
+          `/api/applications/user/${userEmail}`
         );
         const apps = appsRes.data || [];
         setStats({
@@ -67,8 +67,8 @@ function Profile() {
           rejected: apps.filter(a => a.status === "Rejected" || a.status === "Documents Rejected").length,
         });
       } else {
-        const appsRes = await axios.get(
-          "http://localhost:5000/api/applications"
+        const appsRes = await api.get(
+          "/api/applications"
         );
         const apps = appsRes.data || [];
         setStats({
@@ -110,8 +110,8 @@ function Profile() {
     setPassLoading(true);
 
     try {
-      const response = await axios.put(
-        "http://localhost:5000/api/auth/change-password",
+      const response = await api.put(
+        "/api/auth/change-password",
         {
           currentPassword: passwordForm.currentPassword,
           newPassword: passwordForm.newPassword,

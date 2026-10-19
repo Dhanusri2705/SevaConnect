@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../services/api";
 
 function ServiceFormModal({ show, onClose, serviceToEdit, onSave }) {
   const [formData, setFormData] = useState({
@@ -97,14 +97,14 @@ function ServiceFormModal({ show, onClose, serviceToEdit, onSave }) {
     try {
       let response;
       if (serviceToEdit) {
-        response = await axios.put(
-          `http://localhost:5000/api/services/${serviceToEdit._id}`,
+        response = await api.put(
+          `/api/services/${serviceToEdit._id}`,
           payload,
           authConfig
         );
       } else {
-        response = await axios.post(
-          "http://localhost:5000/api/services",
+        response = await api.post(
+          "/api/services",
           payload,
           authConfig
         );

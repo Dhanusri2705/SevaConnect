@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../services/api";
 import { useLocation, useNavigate } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
 
@@ -92,7 +92,7 @@ function ApplyService() {
 
   const fetchServicesList = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/services");
+      const response = await api.get("/api/services");
       if (response.data && Array.isArray(response.data) && response.data.length > 0) {
         const active = response.data.filter((s) => s.isActive !== false);
         setAvailableServices(active);
@@ -160,7 +160,7 @@ function ApplyService() {
 
     try {
       // 1. Create Application Record in MongoDB
-      const response = await axios.post("http://localhost:5000/api/applications", {
+      const response = await api.post("/api/applications", {
         citizenName: formData.citizenName,
         email: formData.email,
         phone: formData.phone,
@@ -177,8 +177,8 @@ function ApplyService() {
         uploadData.append("document", file);
         uploadData.append("documentType", docName);
 
-        await axios.post(
-          `http://localhost:5000/api/applications/${applicationId}/documents`,
+        await api.post(
+          `/api/applications/${applicationId}/documents`,
           uploadData,
           {
             headers: {

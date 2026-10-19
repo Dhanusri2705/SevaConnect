@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../services/api";
 
 function StatusUpdateModal({ show, onClose, application, onUpdate }) {
   const [newStatus, setNewStatus] = useState("");
@@ -40,8 +40,8 @@ function StatusUpdateModal({ show, onClose, application, onUpdate }) {
     setLoading(true);
 
     try {
-      const response = await axios.put(
-        `http://localhost:5000/api/applications/${application._id}/status`,
+      const response = await api.put(
+        `/api/applications/${application._id}/status`,
         {
           status: newStatus,
           rejectionReason: remarks.trim(),

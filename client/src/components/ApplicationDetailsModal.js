@@ -1,4 +1,5 @@
 import React from "react";
+import { getFileUrl } from "../services/api";
 
 function ApplicationDetailsModal({
   show,
@@ -167,7 +168,7 @@ function ApplicationDetailsModal({
                           </td>
                           <td>
                             <a
-                              href={`http://localhost:5000/${doc.filePath}`}
+                              href={getFileUrl(doc.filePath)}
                               target="_blank"
                               rel="noreferrer"
                               className="btn btn-outline-primary btn-sm"

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../services/api";
 
 function UserRoleModal({ show, onClose, targetUser, onUpdate }) {
   const [newRole, setNewRole] = useState("citizen");
@@ -35,8 +35,8 @@ function UserRoleModal({ show, onClose, targetUser, onUpdate }) {
     setLoading(true);
 
     try {
-      const response = await axios.put(
-        `http://localhost:5000/api/auth/users/${targetUser._id}/role`,
+      const response = await api.put(
+        `/api/auth/users/${targetUser._id}/role`,
         { role: newRole },
         authConfig
       );

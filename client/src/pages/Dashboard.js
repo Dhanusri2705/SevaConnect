@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../services/api";
 import { Link } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
 
@@ -65,7 +65,7 @@ function Dashboard() {
 
   const fetchServices = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/services");
+      const response = await api.get("/api/services");
       if (response.data && response.data.length > 0) {
         // Filter only active services for citizens
         const activeServices = response.data.filter((s) => s.isActive !== false);

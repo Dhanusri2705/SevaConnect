@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { API_BASE_URL } from "../services/api";
 
 function PaymentReceiptModal({ show, onClose, application }) {
   const [downloading, setDownloading] = useState(false);
@@ -29,7 +30,7 @@ function PaymentReceiptModal({ show, onClose, application }) {
     setDownloading(true);
     try {
       // Trigger download using fetch buffer or auth bearer window link
-      fetch(`http://localhost:5000/api/payment/${application._id}/receipt/download`, {
+      fetch(`${API_BASE_URL}/api/payment/${application._id}/receipt/download`, {
         headers: { Authorization: `Bearer ${token}` },
       })
         .then((response) => response.blob())

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../services/api";
 import MainLayout from "../layouts/MainLayout";
 import DocumentVerificationModal from "../components/DocumentVerificationModal";
 import StatusUpdateModal from "../components/StatusUpdateModal";
@@ -37,7 +37,7 @@ function OperatorDashboard() {
   // Fetch applications
   const fetchApplications = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/applications");
+      const response = await api.get("/api/applications");
       setApplications(response.data || []);
     } catch (error) {
       console.error(error);
@@ -68,8 +68,8 @@ function OperatorDashboard() {
     setConfirming(true);
 
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/payment/operator-confirm",
+      const response = await api.post(
+        "/api/payment/operator-confirm",
         { applicationId: selectedPaymentApp._id },
         authConfig
       );
@@ -92,8 +92,8 @@ function OperatorDashboard() {
     setRejecting(true);
 
     try {
-      await axios.post(
-        "http://localhost:5000/api/payment/operator-reject",
+      await api.post(
+        "/api/payment/operator-reject",
         {
           applicationId: selectedRejectApp._id,
           rejectionReason: rejectReason || "Payment could not be verified.",

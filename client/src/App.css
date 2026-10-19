@@ -1,5 +1,28 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f4f6f9;
+  color: #212529;
+}
+
 .App {
+  min-height: 100vh;
   text-align: center;
+}
+
+.App-header {
+  background-color: #dc2626;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
 }
 
 .App-logo {
@@ -13,21 +36,6 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -35,4 +43,287 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.App-link {
+  color: #dc2626;
+}
+
+a {
+  color: #dc2626;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #b91c1c;
+}
+
+.navbar,
+.top-navbar,
+.header,
+.app-header {
+  background-color: #dc2626 !important;
+  color: white !important;
+}
+
+.sidebar {
+  background-color: #212529;
+  color: white;
+}
+
+.sidebar a {
+  color: white;
+}
+
+.sidebar a:hover {
+  background-color: #b91c1c;
+  color: white;
+}
+
+.sidebar .active,
+.sidebar a.active,
+.nav-item.active,
+.menu-item.active {
+  background-color: #dc2626 !important;
+  color: white !important;
+}
+
+button,
+.btn-primary,
+.primary-btn,
+.btn-primary-custom {
+  background-color: #dc2626;
+  border-color: #dc2626;
+  color: white;
+}
+
+button:hover,
+.btn-primary:hover,
+.primary-btn:hover,
+.btn-primary-custom:hover {
+  background-color: #b91c1c;
+  border-color: #b91c1c;
+}
+
+.btn-danger {
+  background-color: #dc2626;
+  border-color: #dc2626;
+}
+
+.btn-danger:hover {
+  background-color: #b91c1c;
+  border-color: #b91c1c;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #212529;
+}
+
+.text-primary,
+.text-blue,
+.primary-text {
+  color: #dc2626 !important;
+}
+
+.border-primary,
+.primary-border {
+  border-color: #dc2626 !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: #dc2626 !important;
+  box-shadow: 0 0 0 0.2rem rgba(220, 38, 38, 0.2) !important;
+}
+
+select {
+  cursor: pointer;
+}
+
+.card {
+  background-color: white;
+  border: 1px solid #dee2e6;
+  border-radius: 10px;
+}
+
+.badge-primary,
+.status-primary {
+  background-color: #dc2626 !important;
+  color: white !important;
+}
+
+.red-accent {
+  color: #dc2626;
+}
+
+.red-background {
+  background-color: #dc2626;
+  color: white;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th {
+  background-color: #212529;
+  color: white;
+}
+
+table td {
+  border: 1px solid #dee2e6;
+  padding: 10px;
+}
+
+.modal-header,
+.modal-title-bar {
+  background-color: #dc2626 !important;
+  color: white !important;
+}
+
+.close-btn {
+  color: white;
+  background: transparent;
+  border: none;
+  font-size: 25px;
+}
+
+.close-btn:hover {
+  color: #fee2e2;
+}
+
+.success {
+  background-color: #198754;
+  color: white;
+}
+
+.warning {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+.error {
+  background-color: #dc2626;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+  }
+
+  .navbar {
+    width: 100%;
+  }
+
+  .App-header {
+    padding: 20px;
+  }
+}
+
+.navbar {
+  background-color: #dc2626 !important;
+}
+
+.top-navbar {
+  background-color: #dc2626 !important;
+}
+
+.header {
+  background-color: #dc2626 !important;
+}
+
+.app-header {
+  background-color: #dc2626 !important;
+}
+
+.dashboard-navbar {
+  background-color: #dc2626 !important;
+}
+
+.sidebar .active {
+  background-color: #dc2626 !important;
+}
+
+.sidebar a.active {
+  background-color: #dc2626 !important;
+}
+
+.nav-item.active {
+  background-color: #dc2626 !important;
+}
+
+.menu-item.active {
+  background-color: #dc2626 !important;
+}
+
+button.btn-primary {
+  background-color: #dc2626 !important;
+  border-color: #dc2626 !important;
+}
+
+.btn-primary {
+  background-color: #dc2626 !important;
+  border-color: #dc2626 !important;
+}
+
+.primary-btn {
+  background-color: #dc2626 !important;
+  border-color: #dc2626 !important;
+}
+
+button {
+  border-color: #dc2626;
+}
+
+.text-primary {
+  color: #dc2626 !important;
+}
+
+.primary-text {
+  color: #dc2626 !important;
+}
+
+.fee {
+  color: #dc2626 !important;
+}
+
+.fee-badge {
+  color: #dc2626 !important;
+  border-color: #dc2626 !important;
+}
+
+.view-details {
+  color: #dc2626 !important;
+  border-color: #dc2626 !important;
+}
+
+.apply-now {
+  background-color: #dc2626 !important;
+  border-color: #dc2626 !important;
+  color: white !important;
+}
+
+.active-services {
+  background-color: #dc2626 !important;
+}
+
+.logo {
+  color: #dc2626 !important;
+}
+
+.logo-icon {
+  color: #dc2626 !important;
+}
+
+.sidebar-icon {
+  color: #dc2626 !important;
 }

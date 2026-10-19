@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import api from "../services/api";
 
 function ServiceManagement({
   services,
@@ -29,8 +29,8 @@ function ServiceManagement({
     setTogglingId(service._id);
 
     try {
-      const response = await axios.put(
-        `http://localhost:5000/api/services/${service._id}/toggle`,
+      const response = await api.put(
+        `/api/services/${service._id}/toggle`,
         {},
         authConfig
       );
